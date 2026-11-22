@@ -153,7 +153,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 820px) { .promises ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* Shop */
-.shop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.shop-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 @media (max-width: 920px) { .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .shop-grid { grid-template-columns: 1fr; } }
 .product {
@@ -320,7 +320,8 @@ textarea { min-height: 84px; resize: vertical; }
       <!-- top cookie -->
       <ellipse cx="150" cy="86" rx="126" ry="38" fill="var(--cookie-dark)"/>
       <ellipse cx="150" cy="74" rx="126" ry="40" fill="var(--cookie)"/>
-      <g class="specks" fill="var(--speck)"></g>
+      <g class="specks" style="fill: var(--speck); opacity: var(--speck-op, 1)"></g>
+      <g class="chips" style="fill: var(--chip, transparent)"></g>
       <ellipse cx="112" cy="58" rx="52" ry="12" fill="#fff" opacity=".12"/>
     </symbol>
     <symbol id="magnolia" viewBox="0 0 100 100">
@@ -361,7 +362,7 @@ textarea { min-height: 84px; resize: vertical; }
       <div class="hero-copy">
         <span class="eyebrow">Baked in Murrieta · Sold in La Jolla</span>
         <h1><span class="script">Homemade</span> Oatmeal Cream Pies</h1>
-        <p class="hero-lede">Two soft, chewy oatmeal cookies the size of your palm, sandwiched around fluffy marshmallow cream we whip from scratch. Baked with butter, never seed oils.</p>
+        <p class="hero-lede">Two soft, chewy cookies the size of your palm, sandwiched around fluffy marshmallow cream we whip from scratch. Choose classic oatmeal or chocolate chip. Baked with butter, never seed oils.</p>
         <div class="hero-actions">
           <a class="btn" href="#shop">Order cream pies</a>
           <a class="btn ghost" href="#find-us">Find the pink tent</a>
@@ -393,7 +394,7 @@ textarea { min-height: 84px; resize: vertical; }
       <div class="section-head">
         <span class="eyebrow">The menu</span>
         <h2>Pick your pies</h2>
-        <p>Every pie is baked the day before pickup and wrapped by hand. Mix and match flavors in the boxes at checkout.</p>
+        <p>Two flavors, both baked the day before pickup and wrapped by hand. Boxes can be all one flavor or a mix of both.</p>
       </div>
       <div class="shop-grid" id="shopGrid"></div>
     </div>
@@ -464,7 +465,7 @@ textarea { min-height: 84px; resize: vertical; }
             </div>
             <div class="field">
               <label for="notes">Notes or gift message <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-              <textarea id="notes" name="notes" placeholder="Birthday box for Ava, please add a pink ribbon!"></textarea>
+              <textarea id="notes" name="notes" placeholder="Half dozen: 3 oatmeal, 3 chocolate chip. Pink ribbon please!"></textarea>
             </div>
             <p class="form-error" id="formError" hidden></p>
             <button class="btn" type="submit" id="placeOrder">Place order</button>
@@ -474,7 +475,7 @@ textarea { min-height: 84px; resize: vertical; }
         </div>
       </div>
       <ol class="steps" aria-label="How ordering works">
-        <li><span><b>Build your box</b>Choose singles, half dozens, or a party tray.</span></li>
+        <li><span><b>Build your box</b>Choose oatmeal, chocolate chip, or a box of both.</span></li>
         <li><span><b>Pick a day</b>Orders placed by Wednesday are ready that weekend.</span></li>
         <li><span><b>Grab your pies</b>Pick up at the La Jolla tent or in Murrieta, or have them delivered.</span></li>
       </ol>
@@ -493,6 +494,7 @@ textarea { min-height: 84px; resize: vertical; }
           <h3>The cookies</h3>
           <ul>
             <li>Old-fashioned rolled oats</li>
+            <li>Chocolate chips (in our chocolate chip pies)</li>
             <li>Real butter</li>
             <li>Brown sugar &amp; a touch of molasses</li>
             <li>Cinnamon &amp; vanilla</li>
@@ -581,7 +583,7 @@ textarea { min-height: 84px; resize: vertical; }
         </details>
         <details>
           <summary>Can I order for a party or event?</summary>
-          <p>Yes. The party tray has 24 mini cream pies, and we can do custom ribbon colors and tags for birthdays, showers, and teacher gifts. Add details in the notes at checkout, or order at least one week ahead for 4+ dozen.</p>
+          <p>Yes. Dozen boxes are perfect for parties, and we can do custom ribbon colors and tags for birthdays, showers, and teacher gifts. Add details in the notes at checkout, or order at least one week ahead for 4+ dozen.</p>
         </details>
         <details>
           <summary>Do you ship?</summary>
@@ -623,14 +625,26 @@ textarea { min-height: 84px; resize: vertical; }
     e.setAttribute('opacity', (0.35 + rand() * 0.4).toFixed(2));
     g.appendChild(e);
   }
+  var cg = document.querySelector('#pie .chips');
+  seed = 23;
+  for (var j = 0; j < 22; j++) {
+    var ca = rand() * Math.PI * 2, cr = Math.sqrt(rand()) * 0.82;
+    var cx = 150 + Math.cos(ca) * 122 * cr, cy = 74 + Math.sin(ca) * 36 * cr;
+    var c = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    var w = 5 + rand() * 4;
+    c.setAttribute('d', 'M' + (cx - w).toFixed(1) + ' ' + (cy + 3).toFixed(1) + ' Q' + cx.toFixed(1) + ' ' + (cy - w * 1.1).toFixed(1) + ' ' + (cx + w).toFixed(1) + ' ' + (cy + 3).toFixed(1) + ' Z');
+    cg.appendChild(c);
+  }
 
+  var OAT = { cookie: '#c98a4e', dark: '#9a6232' };
+  var CHIP = { cookie: '#d9a462', dark: '#a8713a', chip: '#3a2018', speckOp: 0.35 };
+  var MIX = { cookie: '#c98a4e', dark: '#9a6232', chip: '#3a2018', speckOp: 0.6 };
+  function look(o, extra) { var r = {}; [o, extra].forEach(function (x) { for (var k in x) r[k] = x[k]; }); return r; }
   var PRODUCTS = [
-    { id: 'classic', name: 'The Classic', desc: 'Our signature oatmeal cream pie with vanilla marshmallow cream.', price: 6, unit: 'each', badge: 'Best seller', cookie: '#c98a4e', dark: '#9a6232' },
-    { id: 'half', name: 'Half Dozen Box', desc: 'Six Classics in a pink gift box, tied with ribbon.', price: 33, unit: '6 pies', badge: 'Save $3', cookie: '#c98a4e', dark: '#9a6232' },
-    { id: 'dozen', name: 'Dozen Box', desc: 'Twelve Classics for the office, the team, or the freezer.', price: 62, unit: '12 pies', badge: 'Save $10', cookie: '#c98a4e', dark: '#9a6232' },
-    { id: 'pumpkin', name: 'Pumpkin Spice', desc: 'Pumpkin oatmeal cookies with cinnamon marshmallow cream. Fall only.', price: 6.5, unit: 'each', badge: 'Seasonal', cookie: '#d08a3c', dark: '#a05e22' },
-    { id: 'brownbutter', name: 'Brown Butter Maple', desc: 'Nutty brown butter cookies with maple marshmallow cream.', price: 6.5, unit: 'each', badge: 'New', cookie: '#b9783e', dark: '#87522a' },
-    { id: 'party', name: 'Mini Party Tray', desc: 'Twenty-four bite-size cream pies for birthdays and showers.', price: 45, unit: '24 minis', badge: 'Party favorite', cookie: '#c98a4e', dark: '#9a6232' }
+    look(OAT, { id: 'oatmeal', name: 'Oatmeal Cream Pie', desc: 'Our signature. Chewy oatmeal cookies with a hint of cinnamon and molasses, filled with vanilla marshmallow cream.', price: 6, unit: 'each', badge: 'Best seller' }),
+    look(CHIP, { id: 'chocchip', name: 'Chocolate Chip Cream Pie', desc: 'Buttery chocolate chip cookies filled with the same from-scratch vanilla marshmallow cream.', price: 6, unit: 'each', badge: 'Fan favorite' }),
+    look(MIX, { id: 'half', name: 'Half Dozen Box', desc: 'Six pies in a pink gift box. All oatmeal, all chocolate chip, or a mix. Tell us your split in the order notes.', price: 33, unit: '6 pies', badge: 'Save $3' }),
+    look(MIX, { id: 'dozen', name: 'Dozen Box', desc: 'Twelve pies for parties, the office, or the freezer. Mix flavors any way you like in the order notes.', price: 62, unit: '12 pies', badge: 'Save $10' })
   ];
   var DELIVERY_FEE = 8;
   var byId = {}; PRODUCTS.forEach(function (p) { byId[p.id] = p; });
@@ -641,7 +655,7 @@ textarea { min-height: 84px; resize: vertical; }
 
   function money(n) { return '$' + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, ''); }
   function pieSvg(p, cls) {
-    return '<svg class="' + (cls || '') + '" viewBox="0 0 300 190" aria-hidden="true" style="--cookie:' + p.cookie + ';--cookie-dark:' + p.dark + '"><use href="#pie"/></svg>';
+    return '<svg class="' + (cls || '') + '" viewBox="0 0 300 190" aria-hidden="true" style="--cookie:' + p.cookie + ';--cookie-dark:' + p.dark + (p.chip ? ';--chip:' + p.chip + ';--speck-op:' + p.speckOp : '') + '"><use href="#pie"/></svg>';
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
