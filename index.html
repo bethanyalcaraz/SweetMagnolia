@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sweet Magnolia</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Sweet Magnolia bakes homemade, bakery-sized oatmeal cream pies with scratch-made marshmallow cream and no seed oils. Order online for pickup or local delivery.">
+<meta name="description" content="Sweet Magnolia bakes homemade, bakery-sized oatmeal cream pies with scratch-made marshmallow cream and no seed oils. Baked in Murrieta, CA and sold at our pop-up in La Jolla. Order online for pickup or local delivery.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -206,8 +206,7 @@ input, select, textarea {
 }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--rose); }
 textarea { min-height: 84px; resize: vertical; }
-.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 520px) { .choices { grid-template-columns: 1fr; } }
+.choices { display: grid; grid-template-columns: 1fr; gap: 10px; }
 .choice { position: relative; }
 .choice input { position: absolute; opacity: 0; inset: 0; }
 .choice label {
@@ -360,14 +359,14 @@ textarea { min-height: 84px; resize: vertical; }
   <section class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Small-batch · Baked to order</span>
+        <span class="eyebrow">Baked in Murrieta · Sold in La Jolla</span>
         <h1><span class="script">Homemade</span> Oatmeal Cream Pies</h1>
         <p class="hero-lede">Two soft, chewy oatmeal cookies the size of your palm, sandwiched around fluffy marshmallow cream we whip from scratch. Baked with butter, never seed oils.</p>
         <div class="hero-actions">
           <a class="btn" href="#shop">Order cream pies</a>
           <a class="btn ghost" href="#find-us">Find the pink tent</a>
         </div>
-        <p class="hero-note">Order by Wednesday for weekend pickup. Local delivery available.</p>
+        <p class="hero-note">Order by Wednesday for weekend pickup at our La Jolla tent. Pickup and delivery also available around Murrieta.</p>
       </div>
       <div class="hero-art">
         <img class="painting" src="images/cream-pie-watercolor.jpg" alt="Watercolor painting of stacked oatmeal cream pies on a seaside cliff with palm trees and a pink hibiscus" width="1000" height="998">
@@ -419,11 +418,15 @@ textarea { min-height: 84px; resize: vertical; }
               <div class="choices" role="radiogroup" aria-labelledby="fulfillLegend">
                 <div class="choice">
                   <input type="radio" name="fulfillment" id="fPickup" value="pickup" checked>
-                  <label for="fPickup"><b>Pickup at the tent</b><span>Free · weekend pop-up</span></label>
+                  <label for="fPickup"><b>Pickup at the La Jolla tent</b><span>Free · weekend pop-up by the beach</span></label>
+                </div>
+                <div class="choice">
+                  <input type="radio" name="fulfillment" id="fMurrieta" value="murrieta">
+                  <label for="fMurrieta"><b>Pickup in Murrieta</b><span>Free · porch pickup by appointment</span></label>
                 </div>
                 <div class="choice">
                   <input type="radio" name="fulfillment" id="fDelivery" value="delivery">
-                  <label for="fDelivery"><b>Local delivery</b><span>$8 · within 10 miles</span></label>
+                  <label for="fDelivery"><b>Local delivery</b><span>$8 · Murrieta, Temecula &amp; Menifee</span></label>
                 </div>
               </div>
             </div>
@@ -473,7 +476,7 @@ textarea { min-height: 84px; resize: vertical; }
       <ol class="steps" aria-label="How ordering works">
         <li><span><b>Build your box</b>Choose singles, half dozens, or a party tray.</span></li>
         <li><span><b>Pick a day</b>Orders placed by Wednesday are ready that weekend.</span></li>
-        <li><span><b>Grab your pies</b>Pick up at the pink tent or have them delivered.</span></li>
+        <li><span><b>Grab your pies</b>Pick up at the La Jolla tent or in Murrieta, or have them delivered.</span></li>
       </ol>
     </div>
   </section>
@@ -529,8 +532,8 @@ textarea { min-height: 84px; resize: vertical; }
       <div class="story-copy">
         <span class="eyebrow">Our story</span>
         <h2>A family stand under the palm trees</h2>
-        <p>Sweet Magnolia started in our kitchen with one craving: the oatmeal cream pies we grew up on, without the ingredient list we couldn't read. After a lot of test batches (and a lot of happy taste testers), we landed on a cookie that's soft in the middle, crisp at the edge, and big enough to share.</p>
-        <p>Now you'll find us most weekends under the white tent with the pink tablecloth. The kids hand out samples, we pack your box, and every pie goes home made with love.</p>
+        <p>Sweet Magnolia started in our kitchen in Murrieta with one craving: the oatmeal cream pies we grew up on, without the ingredient list we couldn't read. After a lot of test batches (and a lot of happy taste testers), we landed on a cookie that's soft in the middle, crisp at the edge, and big enough to share.</p>
+        <p>Every weekend we load up the coolers and drive the pies down to La Jolla, where you'll find us under the white tent with the pink tablecloth. The kids hand out samples, we pack your box, and every pie goes home made with love.</p>
         <p class="signoff">See you at the tent!</p>
       </div>
     </div>
@@ -545,9 +548,9 @@ textarea { min-height: 84px; resize: vertical; }
       </div>
       <div class="find-grid">
         <ul class="schedule">
-          <li><span class="day">Saturday</span><span>Park pop-up by the beach</span><span class="time">9 am – 2 pm</span></li>
-          <li><span class="day">Sunday</span><span>Neighborhood farmers market</span><span class="time">10 am – 2 pm</span></li>
-          <li><span class="day">Weekdays</span><span>Preorder pickup &amp; local delivery</span><span class="time">By appointment</span></li>
+          <li><span class="day">Saturday</span><span>La Jolla pop-up, at the park by the beach</span><span class="time">9 am – 2 pm</span></li>
+          <li><span class="day">Sunday</span><span>La Jolla pop-up, at the park by the beach</span><span class="time">9 am – 2 pm</span></li>
+          <li><span class="day">Weekdays</span><span>Murrieta porch pickup &amp; local delivery</span><span class="time">By appointment</span></li>
         </ul>
         <div class="drinks">
           <h3>Ice cold drinks at the tent</h3>
@@ -582,7 +585,7 @@ textarea { min-height: 84px; resize: vertical; }
         </details>
         <details>
           <summary>Do you ship?</summary>
-          <p>Not yet. Marshmallow cream is happiest close to home, so we offer pickup at the tent and local delivery only.</p>
+          <p>Not yet. Marshmallow cream is happiest close to home, so we offer pickup at our La Jolla tent or in Murrieta, plus delivery around Murrieta, Temecula, and Menifee.</p>
         </details>
       </div>
     </div>
@@ -598,7 +601,7 @@ textarea { min-height: 84px; resize: vertical; }
         <p>Homemade oatmeal cream pies · Seed-oil free · Made with love</p>
       </div>
     </div>
-    <p>&copy; 2026 Sweet Magnolia. Mock-up website.</p>
+    <p>Murrieta, California · Weekends in La Jolla<br>&copy; 2026 Sweet Magnolia. Mock-up website.</p>
   </div>
 </footer>
 
@@ -698,7 +701,7 @@ textarea { min-height: 84px; resize: vertical; }
     }).join('');
     cartView.innerHTML = '<ul class="cart-lines">' + lines + '</ul>' +
       '<div class="totals"><div><span>Subtotal</span><span>' + money(t.sub) + '</span></div>' +
-      '<div><span>' + (t.fee ? 'Local delivery' : 'Pickup at the tent') + '</span><span>' + (t.fee ? money(t.fee) : 'Free') + '</span></div>' +
+      '<div><span>' + (t.fee ? 'Local delivery' : fulfillment() === 'murrieta' ? 'Pickup in Murrieta' : 'Pickup in La Jolla') + '</span><span>' + (t.fee ? money(t.fee) : 'Free') + '</span></div>' +
       '<div class="grand"><span>Total</span><span>' + money(t.total) + '</span></div></div>';
   }
   cartView.addEventListener('click', function (e) {
@@ -745,7 +748,7 @@ textarea { min-height: 84px; resize: vertical; }
     confirm.innerHTML = '<div class="check" aria-hidden="true">✓</div>' +
       '<h3>Thank you, ' + esc(document.getElementById('name').value.trim().split(' ')[0]) + '!</h3>' +
       '<p>Your order <code>' + num + '</code> for ' + t.count + (t.count === 1 ? ' item' : ' items') + ' (' + money(t.total) + ') is booked for ' +
-      (fulfillment() === 'delivery' ? 'delivery' : 'pickup at the tent') + ' on <b>' + when + '</b>, ' + esc(form.time.value) + '.</p>' +
+      ({ delivery: 'delivery', murrieta: 'pickup in Murrieta', pickup: 'pickup at our La Jolla tent' }[fulfillment()]) + ' on <b>' + when + '</b>, ' + esc(form.time.value) + '.</p>' +
       '<p class="demo-note">This is a mock-up, so no confirmation email was sent.</p>' +
       '<button class="btn small ghost" type="button" id="newOrder">Start a new order</button>';
     form.hidden = true; confirm.hidden = false;

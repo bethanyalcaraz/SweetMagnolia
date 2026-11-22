@@ -1,6 +1,6 @@
 # Sweet Magnolia
 
-Mock-up website for **Sweet Magnolia**, a family pop-up selling homemade, bakery-sized oatmeal cream pies — seed-oil free, with marshmallow cream made from scratch.
+Mock-up website for **Sweet Magnolia**, a Murrieta, CA family bakery with a weekend pop-up in La Jolla, selling homemade, bakery-sized oatmeal cream pies — seed-oil free, with marshmallow cream made from scratch.
 
 Open `index.html` in a browser (no build step). It includes:
 
